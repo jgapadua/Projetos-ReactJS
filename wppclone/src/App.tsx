@@ -34,7 +34,7 @@ const App = () => {
             let newUser = {
                 id: userInfo.uid,
                 name: userInfo.displayName,
-                avatar: userInfo.photoURL ?? 'https://graph.facebook.com/1584754295372323/picture'
+                avatar: userInfo.photoURL 
             }
             await api.addUser(newUser);
             setUser(newUser);

@@ -5,12 +5,12 @@ import { ChatType, MessageType, UserType } from './types';
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDOvH6uniDSA2hq_4pUNINKhld5Od2JJkg",
-  authDomain: "wppclone-e19e8.firebaseapp.com",
-  projectId: "wppclone-e19e8",
-  storageBucket: "wppclone-e19e8.appspot.com",
-  messagingSenderId: "576999366127",
-  appId: "1:576999366127:web:0b9e9dde110b8923cbea1a"
+  apiKey: "AIzaSyD-x8n3cw-OmwxTBM3QVZdHkfX33TQ9yFU",
+  authDomain: "wppclone-49679.firebaseapp.com",
+  projectId: "wppclone-49679",
+  storageBucket: "wppclone-49679.appspot.com",
+  messagingSenderId: "948911886642",
+  appId: "1:948911886642:web:a6adec41ec2d963915872b"
 };
 
 // initialize Firebase
