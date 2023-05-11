@@ -1,9 +1,15 @@
 import * as C from './styles';
+import {Item} from '../../types/Item';
 
-export const ListItem=()=>{
+type Props={
+    item:  Item
+}
+
+export const ListItem=({item}: Props)=>{
   return(
     <C.Container>
-      Bem vindo
+      <input type='checkbox'/>
+      <label>{item.name}</label>
     </C.Container>
   );
 }
