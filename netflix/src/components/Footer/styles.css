@@ -1,0 +1,25 @@
+.footer--social {
+  padding: 20px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.footer--social a {
+  padding: 10px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  transition: all ease 0.5s;
+}
+
+.footer--social a:hover {
+  color: #ff9191;
+}
+.footer--info p {
+  font-size: 12px;
+}
+small{
+    color: #bdbdbd;
+    font-size: 11px;
+}
