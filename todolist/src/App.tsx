@@ -14,7 +14,7 @@ import { AddArea } from './components/AddArea';
   const handleAddTask=(taskName: string)=>{
     let newList=[...list];
     newList.push({
-      id:123,
+      id: list.length+1,
       name: taskName,
       done: false
     });
@@ -26,7 +26,7 @@ import { AddArea } from './components/AddArea';
       <C.Area>
       <C.Header>Lista de Tarefas</C.Header>
 
-        <AddArea/>
+        <AddArea onEnter={handleAddTask}/>
         
         {list.map((item, index)=>(
           <ListItem key={index} item={item}/>
