@@ -1,11 +1,17 @@
 import { useState, KeyboardEvent } from 'react';
 import * as C from './styles';
 
-export const AddArea=() =>{
+type Props={
+  onEnter: (taskName: string) => void
+}
+
+export const AddArea=({onEnter}: Props) =>{
     const[inputText, setInputText]= useState('');
 
     const handleKeyUp = (e: KeyboardEvent)=>{
-      console.log(e.code);
+     if (e.code==='Enter' && inputText !== '') {
+       console.log(e.code);
+     }
     }
 
   return (
