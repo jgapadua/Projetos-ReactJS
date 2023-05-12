@@ -4,7 +4,7 @@ type ContainerProps = {
     done: boolean;
 }
 
-export const Container = styled.div(({ done }: ContainerProps)=>(
+export const Container = styled.div<ContainerProps>(({ done })=>(
     `
     display: flex;
     background-color: #20212C;
