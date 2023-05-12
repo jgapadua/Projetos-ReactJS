@@ -11,15 +11,27 @@ import { AddArea } from './components/AddArea';
     {id:2, name:'Comprar um bolo na padaria', done:true},
   ]);
 
+  const handleAddTask=(taskName: string)=>{
+    let newList=[...list];
+    newList.push({
+      id:123,
+      name: taskName,
+      done: false
+    });
+    setList(newList);
+  }
+
   return (
       <C.Container>
       <C.Area>
       <C.Header>Lista de Tarefas</C.Header>
+
         <AddArea/>
         
         {list.map((item, index)=>(
           <ListItem key={index} item={item}/>
         ))}
+
       </C.Area>
       </C.Container>
   );
