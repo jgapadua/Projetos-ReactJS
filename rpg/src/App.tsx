@@ -14,20 +14,28 @@ const App =()=>{
   const handleKeyDown=(e:KeyboardEvent)=>{
     switch(e.code){
       case 'KeyA':
-      case 'ArrowLeft':
         char.moveLeft();
+        break;
+      case 'ArrowLeft':
+        char2.moveLeft();
       break;
       case 'KeyW':
-      case 'ArrowUp':
         char.moveUp();
+        break;
+      case 'ArrowUp':
+        char2.moveUp();
       break;
       case 'KeyD':
-      case 'ArrowRight':
         char.moveRight();
+        break;
+      case 'ArrowRight':
+        char2.moveRight();
       break;
       case 'KeyS':
-      case 'ArrowDown':
         char.moveDown();
+        break;
+      case 'ArrowDown':
+        char2.moveDown();
       break;
     }
   }
