@@ -48,3 +48,11 @@ const FormProvider = ({children}) =>{
     </FormContext.Provider>
   );
 }
+
+//Context Hook
+const useForm = () =>{
+  const context = useContext(FormContext);
+  if(context===undefined){
+    throw new Error('useForm precisa ser usado dentro do FormProvider')
+  }
+}
