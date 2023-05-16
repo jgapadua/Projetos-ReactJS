@@ -1,10 +1,12 @@
+import {useNavigate} from 'react-router-dom'
 import * as C from './styles';
 import {Theme} from '../../components/Theme';
 
 export const FormStep1=()=>{
+  const navigate = useNavigate();
   
   const handleNextStep = ()=>{
-    
+    navigate('/step2');
   }
 
   return(
