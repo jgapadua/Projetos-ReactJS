@@ -6,7 +6,7 @@ export const FormStep1=()=>{
     <Theme>
       <C.Container>
         Passo 1
-     </C.Container>
+      </C.Container>
     </Theme>
   );
 }
