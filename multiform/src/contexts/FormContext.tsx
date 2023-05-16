@@ -11,7 +11,11 @@ import {createContext, useContext, useReducer} from 'react';
   type Action={
     type:FormActions;
     payload:any;
-  };
+  }
+  type ContextType={
+    state:State;
+    dispatch: (action:Action)=> void;
+  }
 
 const initialData: State={
   currentStep: 0,
