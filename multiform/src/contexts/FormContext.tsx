@@ -28,7 +28,7 @@ enum FormActions{
   setEmail,
   setGithub
 }
-const formReducer=(state, action)=>{
+const formReducer=(state: State, action)=>{
     switch(action.type){
       case FormActions.setCurrentStep:
         return {...state, currentStep: action.payload};
