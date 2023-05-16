@@ -1,8 +1,16 @@
 //Context, Reducer, Provider, Hook
 import {createContext, useContext, useReducer} from 'react';
 
+const initialData={
+  currentStep: 0,
+  name: '',
+  level: 0,
+  email: '',
+  github:''
+}
+
 //Context
-const formContext = createContext(undefined);
+const FormContext = createContext(undefined);
 
 //Reducer
 enum FormActions{
@@ -24,5 +32,19 @@ const formReducer=(state, action)=>{
         return {...state, email:action.payload};
       case FormActions.setGithub:
         return {...state, github:action.payload};
+      default:
+        return state;
     }
+}
+
+//Provider
+const FormProvider = ({children}) =>{
+  const [state, dispatch]=useReducer(formReducer, initialData)
+  const value={state,dispatch};
+
+  return(
+    <FormContext.Provider value={value}>
+      {children}
+    </FormContext.Provider>
+  );
 }
