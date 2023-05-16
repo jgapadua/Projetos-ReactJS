@@ -1,14 +1,9 @@
 import * as C from './styles'
-import { ReactNode } from 'react';
 import { useForm } from '../../contexts/FormContext';
-
-
 
 export const ConfirmArea = () =>{
         const { state } = useForm();
         console.log(state.currentStep)
-
-
     return(
         <>
         {state.currentStep === 4 ?
