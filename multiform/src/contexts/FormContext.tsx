@@ -1,5 +1,5 @@
 //Context, Reducer, Provider, Hook
-import {createContext, useContext, useReducer} from 'react';
+import {ReactNode, createContext, useContext, useReducer} from 'react';
 
   type State={
     currentStep:number;
@@ -15,6 +15,9 @@ import {createContext, useContext, useReducer} from 'react';
   type ContextType={
     state:State;
     dispatch: (action:Action)=> void;
+  }
+  type FormProviderProps={
+    children: ReactNode
   }
 
 const initialData: State={
@@ -36,6 +39,7 @@ enum FormActions{
   setEmail,
   setGithub
 }
+
 const formReducer=(state: State, action:Action)=>{
     switch(action.type){
       case FormActions.setCurrentStep:
@@ -54,7 +58,7 @@ const formReducer=(state: State, action:Action)=>{
 }
 
 //Provider
-const FormProvider = ({children}) =>{
+const FormProvider = ({children}:FormProviderProps) =>{
   const [state, dispatch]=useReducer(formReducer, initialData)
   const value={state,dispatch};
 
