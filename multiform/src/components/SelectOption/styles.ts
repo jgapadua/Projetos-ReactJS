@@ -14,11 +14,29 @@ export const Container = styled.div`
     }
 `;
 
-export const Icon = styled.div``;
+export const Icon = styled.div`
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #191A59;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 25px;
+`;
 
-export const Info = styled.div``;
+export const Info = styled.div`
+   flex: 1;
+   margin-left: 20px;
+`;
 
-export const Title = styled.div``;
+export const Title = styled.div`
+   font-size: 17px;
+   font-weight: bold;
+   margin-bottom: 7px;
+`;
 
-export const Description = styled.div``;
-
+export const Description = styled.div`
+    font-size: 14px;
+    color: #B8B8D4;
+`;
