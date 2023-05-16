@@ -13,7 +13,7 @@ export const Theme=( {children}:Props)=>{
 
           <C.Steps>
             <C.Sidebar>
-
+                ...
             </C.Sidebar>
             <C.Page>
               {children}
