@@ -26,7 +26,7 @@ const initialData: State={
 }
 
 //Context
-const FormContext = createContext(undefined);
+const FormContext = createContext<ContextType | undefined>(undefined);
 
 //Reducer
 enum FormActions{
