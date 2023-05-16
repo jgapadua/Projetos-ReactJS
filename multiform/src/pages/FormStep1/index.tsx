@@ -2,6 +2,11 @@ import * as C from './styles';
 import {Theme} from '../../components/Theme';
 
 export const FormStep1=()=>{
+  
+  const handleNextStep = ()=>{
+
+  }
+  
   return(
     <Theme>
       <C.Container>
