@@ -1,7 +1,15 @@
 //Context, Reducer, Provider, Hook
 import {createContext, useContext, useReducer} from 'react';
 
-const initialData={
+  type State={
+    currentStep:number;
+    name:string;
+    level:0|1;
+    email:string;
+    github:string;
+  }
+
+const initialData: State={
   currentStep: 0,
   name: '',
   level: 0,
@@ -55,4 +63,5 @@ const useForm = () =>{
   if(context===undefined){
     throw new Error('useForm precisa ser usado dentro do FormProvider')
   }
+  return context;
 }
