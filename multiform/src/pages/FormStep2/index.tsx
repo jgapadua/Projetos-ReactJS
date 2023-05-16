@@ -31,7 +31,16 @@ export const FormStep2=()=>{
         <h1>Vamos começar com seu nome</h1>
         <p>Preencha o campo abaixo com seu nome completo.</p>
         <hr/>
-        <SelectOption/>
+        <SelectOption
+          title="Sou iniciante"
+          description="Comecei a programar há menos de 2 anos"
+          icon="🥳"
+              />
+        <SelectOption
+            title="Sou programador"
+            description="Já programo há 2 anos ou mais"
+            icon="😎"
+                />
         <button onClick={handleNextStep}>Próximo</button>
       </C.Container>
     </Theme>
