@@ -9,7 +9,7 @@ type Props={
 }
 
 export const Theme=( {children}:Props)=>{
-  const { state } = useForm();
+      const { state } = useForm();
   return(
       <C.Container>
         <C.Area>
