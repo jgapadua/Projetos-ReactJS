@@ -8,6 +8,10 @@ import {createContext, useContext, useReducer} from 'react';
     email:string;
     github:string;
   }
+  type Action={
+    type:FormActions;
+    payload:any;
+  };
 
 const initialData: State={
   currentStep: 0,
