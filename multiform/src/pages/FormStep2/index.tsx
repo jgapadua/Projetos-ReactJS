@@ -3,6 +3,7 @@ import * as C from './styles';
 import {useForm, FormActions} from '../../contexts/FormContext'
 import {Theme} from '../../components/Theme';
 import { ChangeEvent, useEffect } from 'react';
+import {SelectOption} from '../../components/SelectOption';
 
 export const FormStep2=()=>{
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ export const FormStep2=()=>{
         <h1>Vamos começar com seu nome</h1>
         <p>Preencha o campo abaixo com seu nome completo.</p>
         <hr/>
+        <SelectOption/>
         <button onClick={handleNextStep}>Próximo</button>
       </C.Container>
     </Theme>
