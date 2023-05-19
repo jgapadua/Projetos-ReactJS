@@ -133,6 +133,33 @@ namespace WebApplication1.Controllers
             return new JsonResult("Deleted Successfully");
         }
 
+        [HttpPost("{id_post}/like")]
+        public JsonResult Like(int id_post)
+        {
+            string query = @"
+                   UPDATE dbo.Posts
+                   SET likes_post = likes_post + 1
+                   WHERE id_post = @id_post
+                   ";
+            DataTable table = new DataTable();
+            string sqlDataSource = _configuration.GetConnectionString("WinAuth");
+            SqlDataReader myReader;
+            using (SqlConnection myCon = new SqlConnection(sqlDataSource))
+            {
+                myCon.Open();
+                using (SqlCommand myCommand = new SqlCommand(query, myCon))
+                {
+                    myCommand.Parameters.AddWithValue("@id_post", id_post);
+                    myReader = myCommand.ExecuteReader();
+                    table.Load(myReader);
+                    myReader.Close();
+                    myCon.Close();
+                }
+            }
+
+            return new JsonResult("Post Liked Successfully");
+        }
+
     }
 }
 
