@@ -3,6 +3,10 @@ using Microsoft.AspNetCore.Mvc;
 using System.Data;
 using System.Data.SqlClient;
 using WebApplication1.Models;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace WebApplication1.Controllers
 {
@@ -130,11 +134,12 @@ namespace WebApplication1.Controllers
 
             return new JsonResult("Deleted Successfully");
         }
+
         [HttpPost("login")]
         public IActionResult Login(Login login)
         {
             string query = @"
-                SELECT cpf_user, name_user, datebirth_user,adm_user
+                SELECT cpf_user, name_user,datebirth_user, adm_user
                     FROM dbo.Usuarios
                     WHERE login_user = @login_user AND password_user = @password_user";
 
@@ -188,13 +193,25 @@ namespace WebApplication1.Controllers
 
         private string GenerateToken(User user)
         {
-            // Aqui você pode implementar a geração do token de autenticação,
-            // como por exemplo usando JWT (JSON Web Tokens).
-            // O token deve conter as informações do usuário autenticado,
-            // como o CPF, nome e qualquer outra informação necessária.
-            // Retorne o token gerado.
+            var tokenHandler = new JwtSecurityTokenHandler();
+            var key = Encoding.ASCII.GetBytes("SuaChaveSecretaDoJWT");
 
-            return "exemplo-token";
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Subject = new ClaimsIdentity(new Claim[]
+                {
+            new Claim(ClaimTypes.Name, user.cpf_user),
+            new Claim(ClaimTypes.Role, user.adm_user ? "admin" : "user")
+            
+                }),
+                Expires = DateTime.UtcNow.AddDays(7),
+                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
+            };
+
+            var token = tokenHandler.CreateToken(tokenDescriptor);
+            var tokenString = tokenHandler.WriteToken(token);
+
+            return tokenString;
         }
     }
 }
