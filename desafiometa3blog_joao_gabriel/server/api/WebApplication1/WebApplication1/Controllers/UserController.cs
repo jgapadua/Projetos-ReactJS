@@ -166,7 +166,7 @@ namespace WebApplication1.Controllers
             {
 
                 // Retorne os dados do usuário e o token
-                return new JsonResult(table);
+                return new JsonResult(table,"Authorized");
             }
             else
             {
