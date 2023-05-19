@@ -12,8 +12,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Serialization;
 using Microsoft.OpenApi.Models;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
 using System.Text;
 
 
@@ -49,27 +47,6 @@ namespace WebApplication1
                 .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
                 = new DefaultContractResolver());
 
-            //Configuração do JWT
-            var key = Encoding.ASCII.GetBytes("SuaChaveSecretaDoJWT");
-
-            services.AddAuthentication(options =>
-            {
-                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-            }).AddJwtBearer(options =>
-            {
-                options.RequireHttpsMetadata = false; // Apenas para desenvolvimento, use true em produção
-                options.SaveToken = true;
-                options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuerSigningKey = true,
-                    IssuerSigningKey = new SymmetricSecurityKey(key),
-                    ValidateIssuer = false,
-                    ValidateAudience = false
-                };
-            });
-
-
             services.AddControllers();
         }
 
@@ -85,8 +62,6 @@ namespace WebApplication1
             }
 
             app.UseRouting();
-
-            app.UseAuthentication(); // Middleware de autenticação JWT
 
             app.UseAuthorization();
 

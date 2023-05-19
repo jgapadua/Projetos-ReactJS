@@ -139,9 +139,8 @@ namespace WebApplication1.Controllers
         public IActionResult Login(Login login)
         {
             string query = @"
-                SELECT cpf_user, name_user,datebirth_user, adm_user
-                    FROM dbo.Usuarios
-                    WHERE login_user = @login_user AND password_user = @password_user";
+                SELECT *  FROM dbo.Usuarios
+                    WHERE login_user = @login_user Collate SQL_Latin1_General_CP1_CS_AS AND password_user = @password_user Collate SQL_Latin1_General_CP1_CS_AS";
 
             DataTable table = new DataTable();
             string sqlDataSource = _configuration.GetConnectionString("WinAuth");
@@ -165,53 +164,15 @@ namespace WebApplication1.Controllers
 
             if (table.Rows.Count > 0)
             {
-                // Login bem-sucedido
-                var user = new User
-                {
-                    cpf_user = table.Rows[0]["cpf_user"].ToString(),
-                    name_user = table.Rows[0]["name_user"].ToString(),
-                    datebirth_user = Convert.ToDateTime(table.Rows[0]["datebirth_user"]),
-                    adm_user = Convert.ToBoolean(table.Rows[0]["adm_user"])
-                };
-
-                // Gere um token de autenticação (pode ser usando JWT, por exemplo)
-                var token = GenerateToken(user);
 
                 // Retorne os dados do usuário e o token
-                return new JsonResult(new
-                {
-                    user,
-                    token
-                });
+                return new JsonResult(table);
             }
             else
             {
                 // Credenciais inválidas
                 return Unauthorized();
             }
-        }
-
-        private string GenerateToken(User user)
-        {
-            var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes("SuaChaveSecretaDoJWT");
-
-            var tokenDescriptor = new SecurityTokenDescriptor
-            {
-                Subject = new ClaimsIdentity(new Claim[]
-                {
-            new Claim(ClaimTypes.Name, user.cpf_user),
-            new Claim(ClaimTypes.Role, user.adm_user ? "admin" : "user")
-            
-                }),
-                Expires = DateTime.UtcNow.AddDays(7),
-                SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
-            };
-
-            var token = tokenHandler.CreateToken(tokenDescriptor);
-            var tokenString = tokenHandler.WriteToken(token);
-
-            return tokenString;
         }
     }
 }
